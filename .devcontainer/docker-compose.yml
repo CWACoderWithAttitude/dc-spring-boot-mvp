@@ -29,7 +29,7 @@ services:
 
       
   db:
-    image: postgres:14.1-alpine
+    image: postgres:17.5-alpine3.22
     hostname: db.local
     restart: always
     environment:
