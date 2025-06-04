@@ -14,7 +14,7 @@ Volker Benders
 == TL;DR
 DevContainer for Spring Boot & Postgres that gets you started with building production grade REST services that use postgres for persistence.
 
-
+> This is a stripped down version of https://github.com/CWACoderWithAttitude/dc-spring-boot-all-in-one[dc-spring-boot-all-in-one] which is a full blown devcontainer for building REST APIs with Spring Boot. It includes a lot of additional features like monitoring, testing, and more.
 
 == What's inside?
 This is an opinionated devcontainer for building REST APIs with Spring Boot. Setup ships with postgres persistence.
