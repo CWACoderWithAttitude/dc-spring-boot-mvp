@@ -1,5 +1,5 @@
 {
-  "name": "dc-games-service-postgres",
+  "name": "dc-spring-boot-mvp",
   "dockerComposeFile": [
     "docker-compose.yml"
   ],

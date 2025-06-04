@@ -1,4 +1,4 @@
-= https://github.com/CWACoderWithAttitude/dc-spring-boot-all-in-one[Spring Boot All-In-One-Devcontainer]
+= https://github.com/CWACoderWithAttitude/dc-spring-boot-mvp[Spring Boot MVP DevContainer]
 Volker Benders
 :toc:
 :toc-title: Table of Contents
@@ -12,7 +12,7 @@ Volker Benders
 :revdate: 2025-06-04
 
 == TL;DR
-DevContainer for Spring Boot & Postgres that gets you started with building production grade REST services.
+DevContainer for Spring Boot & Postgres that gets you started with building production grade REST services that use postgres for persistence.
 
 
 
@@ -26,7 +26,7 @@ Let's have a look at the main components:
 * OpenJDK 21 
 * Spring Boot 3.5.0
 * Maven 3.9.9
-* Postgres DB 2022
+* Postgres DB 14.1
 * Adminer
 * JaCoCo
 * Bruno
@@ -59,7 +59,7 @@ A picture is worth a thousand words. So let's have a look at the architecture di
 [source,mermaid]
 ....
 flowchart TD
-    subgraph DevContainer: dc-games-service-postgres
+    subgraph DevContainer: dc-spring-boot-mvp
         direction TB
         VSCode[VS Code<br/>]
         GamesService[games-service<br/>Java 21, Maven, Node.js, npm, eslint]
@@ -178,6 +178,8 @@ Let's face it - we all have different machines and different setups. When using 
 |=== 
 
 == ToDos
+
+Topic here are listed in arbitrary order. They are not sorted by priority or anything else.
 - https://www.freecodecamp.org/news/how-to-run-github-actions-locally/s[Test Guhub Actions locally] w act
 - Integrate alerting into the setup. This will be done with 
   * [ ] - [.line-through]#https://prometheus.io/docs/alerting/latest/alertmanager/[AlertManager]#  and 
@@ -191,9 +193,10 @@ Let's face it - we all have different machines and different setups. When using 
 - [ ] - Automate conversion of asciidoc 2 markdown. Makefile contains `generate_markdown: clean asciidoc2docbook docbook2md` to do exactly that. It should be added to the build pipeline to generate the markdown file automatically...
 - [ ] - addd appropriate icons to the architecture diagram
 - [ ] - fix test mocks for metrics and counters
+- [ ] - upgrade postgreso to a more recent version
+- [ ] - add more tests
 
-  
-    
+
 
 == Links
 === DevOps
