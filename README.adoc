@@ -8,16 +8,19 @@ Volker Benders
 
 :description: Spring Boot DevContainer with postgres.
 :keywords: devcontainer, spring boot, rest api, testing, persistence, postgres
-:revnumber: 0.1.0
-:revdate: 2025-06-04
+:revnumber: 0.2.0
+:revdate: 2025-06-12
 
 == TL;DR
-DevContainer for Spring Boot & Postgres that gets you started with building production grade REST services that use postgres for persistence. Just start theis setup in VSCode and you're in the Dev-Game.
+Get your Spring Development booted. Plain & simple. Batteries included. 
 
-> This is a stripped down version of https://github.com/CWACoderWithAttitude/dc-spring-boot-all-in-one[dc-spring-boot-all-in-one] which is a full blown devcontainer for building REST APIs with Spring Boot. It includes a lot of additional features like monitoring, testing, and more.
+> Project to get you started with building REST based webservices. Just Spring Boot and Postgres. 
+
+> This is a stripped down version of https://github.com/CWACoderWithAttitude/dc-spring-boot-all-in-one[dc-spring-boot-all-in-one] which is a full blown devcontainer that includes Spring Boot, OpenJDK 21, Prometheus, AlertManager, Grafana and Mailcatcherfor building REST APIs with Spring Boot. It includes a lot of additional features like monitoring, testing, and more.
 
 == What's inside?
-This is an opinionated devcontainer for building REST APIs with Spring Boot. Setup ships with postgres persistence.
+This is an opinionated devcontainer.
+
 It is not meant to be a complete solution for all use cases. It rather get you started.
 If you have any suggestions or feedback, please let me know.
 
