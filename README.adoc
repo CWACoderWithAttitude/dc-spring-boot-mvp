@@ -12,7 +12,7 @@ Volker Benders
 :revdate: 2025-06-04
 
 == TL;DR
-DevContainer for Spring Boot & Postgres that gets you started with building production grade REST services that use postgres for persistence.
+DevContainer for Spring Boot & Postgres that gets you started with building production grade REST services that use postgres for persistence. Just start theis setup in VSCode and you're in the Dev-Game.
 
 > This is a stripped down version of https://github.com/CWACoderWithAttitude/dc-spring-boot-all-in-one[dc-spring-boot-all-in-one] which is a full blown devcontainer for building REST APIs with Spring Boot. It includes a lot of additional features like monitoring, testing, and more.
 
@@ -26,10 +26,12 @@ Let's have a look at the main components:
 * OpenJDK 21 
 * Spring Boot 3.5.0
 * Maven 3.9.9
-* Postgres DB 14.1
-* Adminer
-* JaCoCo
-* Bruno
+* Postgres DB 17.5
+* Bruno Collection
+
+All this implements this API
+
+image::images/game-service_openAPI.png[Game Service OpenAPI, width=800, alt="Screenshot of the Game Service OpenAPI UI"]
 
 == Components
 
@@ -51,6 +53,92 @@ image::https://github.com/CWACoderWithAttitude/dc-spring-boot-mvp/blob/main/imag
 
 - Basic build pipeline based on GitHub Actions is included. It runs the tests, builds the app and generates the JaCoCo report.
 The JaCoCo-Report is published to the https://cwacoderwithattitude.github.io/dc-spring-boot-mvp/[project website]
+
+== How to use this devcontainer?
+=== Pre-Requisites
+To use this devcontainer, you need to have the following prerequisites installed:
+
+- https://code.visualstudio.com[Visual Studio Code] and
+- https://code.visualstudio.com/docs/remote/containers[Remote - Containers extension for VS Code]
+
+Once you have these prerequisites installed, you can open the devcontainer in VS Code.
+
+=== Open the DevContainer
+
+1. Clone the repository:
+```
+git clone https://github.com/CWACoderWithAttitude/dc-spring-boot-mvp.git
+cd dc-spring-boot-mvp
+```
+[numbered, start=2]
+2. Open the repository in Visual Studio Code.
+You can do this by either opening the folder in VS Code or by using the command line:
+```
+code -n .
+```   
+[numbered, start=3]
+3. Open the Command Palette (Ctrl+Shift+P or Cmd+Shift+P on macOS) and select `Remote-Containers: Open Folder in Container...`.
+
+
+
+Default settings start the game-service on local port 9088.
+
+The service implements a REST service that manages games. It allows you to create, read, update and delete games. 
+
+The http://localhost:8088/swagger-ui/index.html#/[Game-Service Open-API] page show an overview of available endpoints.
+
+
+You can access the service at http://localhost:8088[http://localhost:8088].
+See file://Makefile[Makefile] for a list of commands to run the service, tests, and more.
+The make target fires up the spring-boot:run command which listens for file changes and automatically reloads the service when you change the code.
+
+=== Makefile
+
+The `Makefile` in the root folder provides convenient commands for building, running, testing, and maintaining the project. Below is a list of available targets:
+
+[cols="1,3"]
+|===
+| Target | Description
+
+| `check_docker_compose_config`
+| Validates the Docker Compose configuration for the devcontainer.
+
+| `sb_clean`
+| Cleans the Maven build artifacts for the game-service module.
+
+| `sb_build`
+| Builds the game-service module using Maven and creates a JAR file.
+
+| `sb_run`
+| Starts the game-service Spring Boot application in development mode (auto-reloads on code changes).
+
+| `sb_debug`
+| Starts the game-service Spring Boot application in debug mode (listening on port 8000 for a debugger).
+
+| `build`
+| Builds the Docker image for the game-service.
+
+| `run`
+| Runs the game-service Docker container (builds the image first if needed).
+
+| `asciidoc2docbook`
+| Converts AsciiDoc documentation to DocBook XML using Asciidoctor in Docker.
+
+| `clean`
+| Removes generated documentation files and build artifacts.
+
+| `docbook2md`
+| Converts DocBook XML documentation to Markdown using Pandoc in Docker.
+
+| `generate_markdown`
+| Cleans, converts AsciiDoc to DocBook, then to Markdown (full documentation conversion pipeline).
+|===
+
+To use a target, run `make <target>` in the project root. For example, `make sb_run` will start the application.
+
+For more details, see the `Makefile` itself.
+
+
 
 ==== Architecture Diagram
 
@@ -80,9 +168,10 @@ flowchart TD
 
 I ship my examples with https://www.usebruno.com[Bruno] collections.
 
-Please find the ganes api collection in the `bruno` folder.
+Please find the games api collection in the `bruno` folder.
 
 You can import them into Bruno by clicking on the `+` icon in the top left corner and selecting `Import Collection`.
+
 
 There's a CLI tool to run collections, too:
 ```
@@ -179,20 +268,14 @@ Let's face it - we all have different machines and different setups. When using 
 == ToDos
 
 Topic here are listed in arbitrary order. They are not sorted by priority or anything else.
-- https://www.freecodecamp.org/news/how-to-run-github-actions-locally/s[Test Guhub Actions locally] w act
-- Integrate alerting into the setup. This will be done with 
-  * [ ] - [.line-through]#https://prometheus.io/docs/alerting/latest/alertmanager/[AlertManager]#  and 
-  * [ ] - https://grafana.com/docs/grafana/latest/alerting/notifications/[Grafana Alerting] and
-  * [ ] - [.line-through]#https://blog.devops.dev/send-email-alerts-using-prometheus-alert-manager-16df870144a4[Send email alerts using Prometheus Alert Manager]#
-- [x] - publish JaCoCo Report 
-- [ ] - Integrate Keycloak for authentication and authorization
-- [ ] - Run app on Firebase
-- [ ] - Deploy app on AWS using CDK and AWS Lambda
-- [ ] - Add Kong API Gateway
+
+- https://www.freecodecamp.org/news/how-to-run-github-actions-locally/s[Test Guhub Actions locally] with `act`
+- [x] - publish JaCoCo Report to Project Website
+- [x] - add a Makefile to run the service, tests, and more
 - [ ] - Automate conversion of asciidoc 2 markdown. Makefile contains `generate_markdown: clean asciidoc2docbook docbook2md` to do exactly that. It should be added to the build pipeline to generate the markdown file automatically...
 - [ ] - addd appropriate icons to the architecture diagram
 - [ ] - fix test mocks for metrics and counters
-- [ ] - upgrade postgreso to a more recent version
+- [x] - upgrade postgreso to a more recent version
 - [ ] - add more tests
 
 
@@ -205,6 +288,8 @@ Topic here are listed in arbitrary order. They are not sorted by priority or any
 - https://medium.com/@AlexanderObregon/how-spring-boot-maps-environment-variables-to-configuration-properties-2ddc55e361ca[How Spring Boot Maps Environment Variables to Configuration Properties]
 - https://medium.com/simform-engineering/testing-spring-boot-applications-best-practices-and-frameworks-6294e1068516[Testing Spring Boot Applications: Best Practices and Frameworks]
 - https://www.baeldung.com/spring-boot-mssql[Spring Boot with MS SQL]
+- https://rameshfadatare.medium.com/spring-boot-crud-example-with-postgresql-926c87f0129a[Spring Boot CRUD Example with PostgreSQL]
+- https://www.baeldung.com/spring-boot-postgresql-docker[Spring Boot with PostgreSQL in Docker]
 
 === Writing
 
@@ -223,6 +308,4 @@ Documenation is provided in Asciidoc format.
 - https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams-with-asciidoctor-diagram[Creating diagrams with Asciidoctor Diagram]
 
 [ditaa]
-...
-
 ...

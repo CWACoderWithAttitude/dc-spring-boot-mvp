@@ -40,6 +40,7 @@
   "features": {
     "ghcr.io/devcontainers-extra/features/maven-sdkman:2": {
       "jdkVersion": "21"
-    }
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
   }
 }
