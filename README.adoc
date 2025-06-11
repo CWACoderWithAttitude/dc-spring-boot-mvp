@@ -31,7 +31,7 @@ Let's have a look at the main components:
 
 All this implements this API
 
-image::images/game-service_openAPI.png[Game Service OpenAPI, width=800, alt="Screenshot of the Game Service OpenAPI UI"]
+image::https://github.com/CWACoderWithAttitude/dc-spring-boot-mvp/blob/main/images/game-service_openAPI.png[Game Service OpenAPI, width=800, alt="Screenshot of the Game Service OpenAPI UI"]
 
 == Components
 
