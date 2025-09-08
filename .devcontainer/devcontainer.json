@@ -33,14 +33,16 @@
   },
   "service": "games-service",
   "workspaceFolder": "/src/",
-  "remoteUser": "vscode",
+  //"remoteUser": "vscode",
   "postCreateCommand": "",
   "postStartCommand": "make sb_run",
   "shutdownAction": "stopCompose",
+  /*
   "features": {
     "ghcr.io/devcontainers-extra/features/maven-sdkman:2": {
       "jdkVersion": "21"
-    },
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
-  }
+      },
+ /    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+      }
+  */
 }

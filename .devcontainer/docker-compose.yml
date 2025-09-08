@@ -1,10 +1,10 @@
 services:
   games-service:
-    image: mcr.microsoft.com/devcontainers/java:21
+    image: quay.balgroupit.com/library/openjdk:21-jdk-alpine
     hostname: games-service.local
     volumes:
       -  ..:/src:cached
-      -  $HOME/.m2:/home/vscode/.m2:cached
+      -  ${USERPROFILE}:/home/vscode/.m2:cached
     working_dir: /src 
     ports:
       - "${app_port}:8080"
