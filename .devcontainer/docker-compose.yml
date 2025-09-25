@@ -42,7 +42,21 @@ services:
       - pg_data:/var/lib/postgresql/data
     networks:
       game-service-net:
-  
+  # https://docs.postgrest.org/en/v12/explanations/install.html#containerized-postgrest-and-db-with-docker-compose
+  postgrest:
+    image: postgrest/postgrest:latest
+    restart: always
+    ports:
+      - "${postgrest_port}:3000"
+    environment:
+      PGRST_DB_URI: "postgres://${db_user}:${db_password}@db.local:5432/${db_name}"
+      #PGRST_DB_ANON_ROLE: "web_anon"
+      #PGRST_DB_SCHEMA: "public"
+      PGRST_JWT_SECRET: "reallyreallyreallyreallyverysafe"
+    networks:
+      game-service-net:  
+    depends_on:
+      - db
 
 networks:
   game-service-net:

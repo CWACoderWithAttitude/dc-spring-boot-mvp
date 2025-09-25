@@ -1,0 +1,20 @@
+meta {
+  name: http://localhost:23088/games
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:23088/games
+  body: none
+  auth: basic
+}
+
+auth:basic {
+  username: postgres
+  password: postgres
+}
+
+settings {
+  encodeUrl: true
+}
