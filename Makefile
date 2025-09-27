@@ -21,7 +21,7 @@ sb_run:
 	game-service/mvnw spring-boot:run --file game-service/pom.xml
 sb_debug:
 	game-service/mvnw spring-boot:run -Dspring-boot.run.jvmArguments="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000" --file game-service/pom.xml
-
+sb_clean_build_run: sb_clean sb_build sb_run
 
 build:
 	docker build -t $(tag) .

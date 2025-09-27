@@ -1,0 +1,17 @@
+https://claude.ai/chat/495766c4-1073-4875-b56b-6c881eaf38d6
+
+ 1. Neues Vite React-Projekt erstellen
+npm create vite@latest game-manager-app -- --template react-ts
+cd game-manager-app
+
+# 2. Dependencies installieren
+npm install lucide-react
+
+# 3. Ihre TSX-Datei nach src/App.tsx kopieren
+# Ersetzen Sie den Inhalt von src/App.tsx mit Ihrer heruntergeladenen Datei
+
+# 4. src/App.css leeren oder löschen (Tailwind wird verwendet)
+echo "" > src/App.css
+
+# 5. Entwicklungsserver starten
+npm run dev

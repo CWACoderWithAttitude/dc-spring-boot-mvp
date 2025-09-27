@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.logging.Logger;
 
+
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/games/upload")
 public class GameUploadController {
