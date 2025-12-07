@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --lcars-bg: #0f1020;
+  --lcars-orange: #ff7a00;
+  --lcars-blue: #00b4ff;
+  --lcars-gold: #ffd24a;
+  --lcars-pink: #ff58a0;
+  --lcars-black: #0b0b0b;
+}
+
+html, body {
+  height: 100%;
+  background: var(--lcars-bg);
+  color: white;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+/* LCARS simplified components */
+.lcars-shell { padding: 1rem; }
+.lcars-topbar {
+  display:flex; align-items:center; gap:12px; margin-bottom:1rem;
+}
+.lcars-pill {
+  background: var(--lcars-orange);
+  padding: 10px 18px; border-radius: 999px 999px 12px 12px; color: var(--lcars-black);
+  font-weight: 700;
+}
+.lcars-rect {
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border-left: 8px solid var(--lcars-blue);
+  padding: 12px; border-radius: 10px; margin: 8px 0;
+}
+.lcars-accent {
+  color: var(--lcars-gold);
+  font-weight: 600;
+}
+
+.lcars-column { display:flex; gap:1rem; flex-wrap:wrap; }
+.lcars-card {
+  background: rgba(255,255,255,0.03); padding: 12px; border-radius: 10px;
+}
+
+/* small screens adjustments */
+@media (max-width: 640px) {
+  .lcars-topbar { flex-direction:column; align-items:flex-start }
+}

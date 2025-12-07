@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:5173")
+//@CrossOrigin(origins = ["http://localhost:5173", "http://192.168.178.162:5173"])
+@CrossOrigin(origins = "http://192.168.178.47:5173")
+// @CrossOrigin(origins = "http://*:5173")
 @RestController
 @RequestMapping("games")
 public class GameController {
@@ -40,11 +42,16 @@ public class GameController {
     @PostConstruct
     private void init() {
         try {
-            gameListCounter = buildCounter(meterRegistry, "api_games_list", "a number of GET requests to /games/ endpoint");
-            gameByIdCounter = buildCounter(meterRegistry, "api_games_getById", "a number of GET requests to /games/{id} endpoint");
-            gamesUpdateCounter = buildCounter(meterRegistry, "api_games_update", "a number of PUT requests to /games/{id} endpoint");
-            newGameCounter = buildCounter(meterRegistry, "api_games_new", "a number of POST requests to /games/new endpoint");
-            deleteGameCounter = buildCounter(meterRegistry, "api_games_deleteById", "a number of DELETE requests to /games/{id} endpoint");
+            gameListCounter = buildCounter(meterRegistry, "api_games_list",
+                    "a number of GET requests to /games/ endpoint");
+            gameByIdCounter = buildCounter(meterRegistry, "api_games_getById",
+                    "a number of GET requests to /games/{id} endpoint");
+            gamesUpdateCounter = buildCounter(meterRegistry, "api_games_update",
+                    "a number of PUT requests to /games/{id} endpoint");
+            newGameCounter = buildCounter(meterRegistry, "api_games_new",
+                    "a number of POST requests to /games/new endpoint");
+            deleteGameCounter = buildCounter(meterRegistry, "api_games_deleteById",
+                    "a number of DELETE requests to /games/{id} endpoint");
             if (gameService.list().size() >= MIN_NUMBER_OF_GAMES) {
                 logger.info("Games already exist in the database, skipping seed data.");
             } else {

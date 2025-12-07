@@ -4,7 +4,6 @@
     "docker-compose.yml"
   ],
   "customizations": {
-    // Configure properties specific to VS Code.
     "vscode": {
       "settings": {
         "terminal.integrated.defaultProfile.linux": "zsh",
@@ -26,8 +25,11 @@
         "ms-azuretools.vscode-docker",
         "ms-vscode.makefile-tools",
         "GitHub.copilot-chat",
-        "cweijan.vscode-myssql-client2",
-        "redhat.vscode-xml"
+        "redhat.vscode-xml",
+        "google.geminicodeassist",
+        "swark.swark",
+        "bruno-api-client.bruno",
+        "svelte.svelte-vscode"
       ]
     }
   },
@@ -35,12 +37,12 @@
   "workspaceFolder": "/src/",
   "remoteUser": "vscode",
   "postCreateCommand": "",
-  "postStartCommand": "make sb_run",
+  "postStartCommand": "make sb_clean_build_run",
   "shutdownAction": "stopCompose",
   "features": {
     "ghcr.io/devcontainers-extra/features/maven-sdkman:2": {
       "jdkVersion": "21"
     },
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    //"ghcr.io/devcontainers/features/docker-in-docker:2": {}
   }
 }

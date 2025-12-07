@@ -3,9 +3,9 @@ services:
     image: mcr.microsoft.com/devcontainers/java:21
     hostname: games-service.local
     volumes:
-      -  ..:/src:cached
-      -  $HOME/.m2:/home/vscode/.m2:cached
-    working_dir: /src 
+      - ..:/src:cached
+      - $HOME/.m2:/home/vscode/.m2:cached
+    working_dir: /src
     ports:
       - "${app_port}:8080"
       - "${app_debug_port}:8000"
@@ -15,7 +15,19 @@ services:
       bash -c "sleep infinity"
     networks:
       game-service-net:
-
+  games-frontend:
+    build:
+      context: ../react/game-manager-app
+    volumes:
+      - ../react/game-manager-app:/src:cached
+      #- /src/node_modules
+    working_dir: /usr/src/app
+    ports:
+      - "${app_frontend_port}:5137"
+    command: >
+      bash -c "sleep infinity"
+    networks:
+      game-service-net:
   adminer:
     image: adminer:5.0.4
     restart: always
@@ -26,8 +38,6 @@ services:
     networks:
       game-service-net:
 
-
-      
   db:
     image: postgres:17.5-alpine3.22
     hostname: db.local
@@ -55,7 +65,7 @@ services:
       #PGRST_DB_SCHEMA: "public"
       PGRST_JWT_SECRET: "reallyreallyreallyreallyverysafe"
     networks:
-      game-service-net:  
+      game-service-net:
     depends_on:
       - db
   swagger:
@@ -71,5 +81,5 @@ networks:
   game-service-net:
 
 volumes:
-  pg_data: 
+  pg_data:
     driver: local

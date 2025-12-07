@@ -175,6 +175,11 @@ Please find the games api collection in the `bruno` folder.
 
 You can import them into Bruno by clicking on the `+` icon in the top left corner and selecting `Import Collection`.
 
+To run the collections from the command line, you first need to install the Bruno CLI. Since `npm` is included in this devcontainer, you can install it with:
+
+```bash
+npm install -g @usebruno/cli
+```
 
 There's a CLI tool to run collections, too:
 ```
@@ -272,7 +277,7 @@ Let's face it - we all have different machines and different setups. When using 
 
 Topic here are listed in arbitrary order. They are not sorted by priority or anything else.
 
-- https://www.freecodecamp.org/news/how-to-run-github-actions-locally/s[Test Guhub Actions locally] with `act`
+- https://www.freecodecamp.org/news/how-to-run-github-actions-locally/s[Test Github Actions locally] with `act`
 - [x] - publish JaCoCo Report to Project Website
 - [x] - add a Makefile to run the service, tests, and more
 - [ ] - Automate conversion of asciidoc 2 markdown. Makefile contains `generate_markdown: clean asciidoc2docbook docbook2md` to do exactly that. It should be added to the build pipeline to generate the markdown file automatically...
